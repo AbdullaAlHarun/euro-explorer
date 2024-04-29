@@ -5,6 +5,7 @@ import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const Register = () => {
   const { creatUser } = useContext(AuthContex);
@@ -22,23 +23,33 @@ const Register = () => {
   const passwordType = showPassword ? "text" : "password";
   const eyeIcon = showPassword ? eye : eyeOff;
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, e) => {
     const { email, password } = data;
 
     // creat user in firebase
     creatUser(email, password)
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        console.error(error);
+    .then((result) => {
+      console.log(result);
+
+      // Show success message using SweetAlert2
+      Swal.fire({
+        icon: 'success',
+        title: 'User Created Successfully',
+        text: 'Congratulations! Your account has been created successfully.',
       });
+
+       // Reset the form after successful registration
+      e.target.reset();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   };
 
   return (
     <div className="container mx-auto w-96 mt-8 shadow-xl p-8">
       <h1 className="text-2xl font-bold mb-4">Register</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={(e) => handleSubmit(onSubmit)(e)}>
         <div className="mb-4 relative">
           <label className="block text-sm font-bold mb-2" htmlFor="name">
             Name
