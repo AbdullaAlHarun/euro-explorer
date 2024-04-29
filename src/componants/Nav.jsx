@@ -57,7 +57,7 @@ console.log(user)
             </NavLink>
 
             <NavLink
-              to="/Contact"
+              to="/MyList"
               className={({ isActive }) =>
                 isActive ? "text-primary font-bold" : "font-bold"
               }
@@ -121,7 +121,14 @@ console.log(user)
         </ul>
       </div>
       <div className="navbar-end">
-        {user?.email ? 
+      <div>
+      <Link to="/Register">
+            <button className="btn btn-success btn-sm mr-4 text-white">Register</button>
+      </Link>
+      </div>
+
+      <div>
+      {user?.email ? 
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
@@ -146,6 +153,7 @@ console.log(user)
             <button className="btn btn-success btn-sm mr-4 text-white">Log In</button>
           </Link>
         }
+      </div>
       </div>
     </div>
   );
