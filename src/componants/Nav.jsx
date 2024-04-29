@@ -120,41 +120,52 @@ console.log(user)
           </NavLink>
         </ul>
       </div>
-      <div className="navbar-end">
-      <div>
-      <Link to="/Register">
-            <button className="btn btn-success btn-sm mr-4 text-white">Register</button>
-      </Link>
-      </div>
+   
 
-      <div>
-      {user?.email ? 
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src="https://lh3.googleusercontent.com/a/ACg8ocI5ix9vJQCCN9P7LgV1Iw2GCvPrFng9FliU7CkDqbXvwwSK79TG=s396-c-no" alt="user avatar" />
-              </div>
-            </label>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-              <li>
-                <button className="btn btn-sm btn-ghost">
-                  Mehedi
-                </button>
-              </li>
-              <li>
-                <button onClick={logout} className="btn btn-sm ">
-                  Logout
-                </button>
-              </li>
-            </ul>
-          </div>
-         : 
-          <Link to="/Login">
-            <button className="btn btn-success btn-sm mr-4 text-white">Log In</button>
-          </Link>
-        }
-      </div>
-      </div>
+<div className="navbar-end">
+  {/* Conditional Rendering based on user authentication */}
+  {!user?.email ? (
+    // If user is not logged in, display register and login buttons
+    <div>
+      <Link to="/Register">
+        <button className="btn btn-success btn-sm mr-4 text-white">
+          Register
+        </button>
+      </Link>
+      <Link to="/Login">
+        <button className="btn btn-success btn-sm mr-4 text-white">
+          Log In
+        </button>
+      </Link>
+    </div>
+  ) : (
+    // If user is logged in, display user profile and logout button
+    <div className="dropdown dropdown-end">
+      <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+        <img src="https://lh3.googleusercontent.com/a/ACg8ocI5ix9vJQCCN9P7LgV1Iw2GCvPrFng9FliU7CkDqbXvwwSK79TG=s396-c-no" alt="user avatar" />
+
+        </div>
+      </label>
+      <ul
+        tabIndex={0}
+        className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+      >
+        <li>
+          <button className="btn btn-sm btn-ghost text-black">
+              Mehedi
+          </button>
+        </li>
+        <li>
+          <button onClick={logout} className="btn btn-sm ">
+            Logout
+          </button>
+        </li>
+      </ul>
+    </div>
+  )}
+</div>
+
     </div>
   );
 };
