@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types'
 
 const MyList = ({ userEmail }) => {
   const [touristSpots, setTouristSpots] = useState([]);
@@ -64,3 +65,7 @@ const MyList = ({ userEmail }) => {
 };
 
 export default MyList;
+MyList.propTypes = {
+    userEmail: PropTypes.node,
+  };
+  

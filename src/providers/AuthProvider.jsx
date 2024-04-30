@@ -21,16 +21,21 @@ const githubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
+  const [loading, setLoading] = useState(true);
+
   const creatUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signInUser = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
 // SignOut 
   const logout = () => {
+    setLoading(true);
     setUser(null)
     signOut(auth)
 }
@@ -48,6 +53,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false);
       console.log("observing user", currentUser);
     });
 
@@ -58,11 +64,13 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     user,
+    loading,
     creatUser,
     signInUser,
     logout,
     googleLogin,
     githubLogin,
+
   };
 
   return <AuthContex.Provider value={authInfo}>{children}</AuthContex.Provider>;

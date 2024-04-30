@@ -1,11 +1,13 @@
 import { useForm } from 'react-hook-form';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
   const { signInUser, googleLogin, githubLogin } = useAuth();
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = (data, e) => {
     const { email, password } = data;
@@ -21,6 +23,7 @@ const Login = () => {
           });
 
           e.target.reset();
+          navigate('/');
       })
       .catch((error) => {
         console.error(error);

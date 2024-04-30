@@ -1,13 +1,10 @@
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types'
 
 const TouristSportCard = ({ spot }) => {
-  // Perform null check for spot object
-  if (!spot) {
-    return null; 
-  }
-
+  
   const {
-    _id, // Assuming _id is the ID of the spot
+    _id, 
     image,
     touristsSpotName,
     countryName,
@@ -18,10 +15,7 @@ const TouristSportCard = ({ spot }) => {
     totalVisitorsPerYear,
   } = spot;
 
-  // Perform null check for image property
-  if (!image) {
-    return null; 
-  }
+ 
 
   return (
     <div>
@@ -58,3 +52,8 @@ const TouristSportCard = ({ spot }) => {
 };
 
 export default TouristSportCard;
+
+TouristSportCard.propTypes = {
+  spot: PropTypes.node,
+};
+
