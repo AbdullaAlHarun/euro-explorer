@@ -24,6 +24,13 @@ const Login = () => {
       })
       .catch((error) => {
         console.error(error);
+        // Show error message if email and password don't match
+        Swal.fire({
+          position: "top-end",
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Invalid email or password!',
+        });
       });
   };
 
