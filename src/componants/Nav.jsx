@@ -4,7 +4,6 @@ import useAuth from "../hooks/useAuth";
 const Nav = () => {
   const { logout, user } = useAuth();
 
-console.log(user)
   return (
     <div className="navbar bg-[#a90f33] shadow-lg fixed z-10">
       <div className="navbar-start">

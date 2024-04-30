@@ -12,11 +12,11 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout> </MainLayout>,
-        errorElement: <NotFoundPage></NotFoundPage>,
         children: [
             {
                 path: '/',
                 element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/euroExplorer')
             },
             {
                 path: '/AddTouristSpot',
@@ -25,9 +25,11 @@ const router = createBrowserRouter([
             {
                 path: '/AllTouristSpot',
                 element:  <AllTouristSpot></AllTouristSpot>,
+                loader: () => fetch('http://localhost:5000/euroExplorer')
             },
+          
             {
-                path: '/AllTouristSpot',
+                path: '/MyList',
                 element:  <MyList></MyList>,
             },
             {
