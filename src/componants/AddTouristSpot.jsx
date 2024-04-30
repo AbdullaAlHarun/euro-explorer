@@ -1,6 +1,10 @@
 import Swal from 'sweetalert2';
+import useAuth from "../hooks/useAuth";
 
 const AddTouristSpot = () => {
+  const { user } = useAuth() || {};
+
+
   const handleSubmit = event => {
     event.preventDefault();
 
@@ -17,7 +21,7 @@ const AddTouristSpot = () => {
     const totalVisitorsPerYear = form.total_visitors_per_year.value;
     const userEmail = form.user_email.value;
     const userName = form.user_name.value;
-
+    const email = user.email;
     const newTouristSpot = {
       image,
       touristsSpotName,
@@ -30,12 +34,13 @@ const AddTouristSpot = () => {
       totalVisitorsPerYear,
       userEmail,
       userName,
+      email,
     };
 
     console.log(newTouristSpot);
 
     // Send data to the server
-    fetch('http://localhost:5000/euroExplorer', {
+    fetch('https://euro-explorer-server.vercel.app/euroExplorer', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

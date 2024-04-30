@@ -1,51 +1,63 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../pages/Home";
 import MainLayout from "../layout/MainLayout";
-import Register from "../componants/Register";
+import Home from "../pages/Home";
+import NotFoundPage from "../pages/NotFoundPage";
 import AddTouristSpot from "../componants/AddTouristSpot";
 import AllTouristSpot from "../componants/AllTouristSpot";
 import MyList from "../componants/MyList";
-import NotFoundPage from "../pages/NotFoundPage";
+import Register from "../componants/Register";
 import Login from "../componants/Login";
+import ViewDetailsPage from "../componants/ViewDetailsPage";
+import TouristSportCard from "../componants/TouristSportCard";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <MainLayout> </MainLayout>,
+        element: <MainLayout />,
         children: [
             {
                 path: '/',
-                element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/euroExplorer')
+                element: <Home />,
+                loader: () => fetch('https://euro-explorer-server.vercel.app/euroExplorer')
             },
             {
                 path: '/AddTouristSpot',
-                element:  <AddTouristSpot></AddTouristSpot>,
+                element: <AddTouristSpot />,
             },
             {
                 path: '/AllTouristSpot',
-                element:  <AllTouristSpot></AllTouristSpot>,
-                loader: () => fetch('http://localhost:5000/euroExplorer')
+                element: <AllTouristSpot />,
+                loader: () => fetch('https://euro-explorer-server.vercel.app/euroExplorer')
             },
-          
+            {
+                path: '/TouristSpotCard',
+                element: <TouristSportCard></TouristSportCard>,
+                loader: () => fetch('https://euro-explorer-server.vercel.app/euroExplorer')
+            },
             {
                 path: '/MyList',
-                element:  <MyList></MyList>,
+                element: <PrivateRoute><MyList /></PrivateRoute>,
             },
             {
                 path: '/Register',
-                element: <Register></Register>,
+                element: <Register />,
             },
             {
                 path: '/Login',
-                element: <Login></Login>,
+                element: <Login />,
             },
-
+            {
+                path: '/ViewDetailsPage/:_id',
+                element: <ViewDetailsPage />,
+                loader: () => fetch('https://euro-explorer-server.vercel.app/euroExplorer')
+            },
             {
                 path: "*",
-                element: <NotFoundPage></NotFoundPage>,
-              },
+                element: <NotFoundPage />,
+            },
         ]
     }
 ]);
+
 export default router;

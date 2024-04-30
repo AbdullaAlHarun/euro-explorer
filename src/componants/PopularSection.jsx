@@ -6,12 +6,12 @@ const PopularSection = () => {
       <div className="popular-left max-w-3xl mx-4">
         <h2 className="popular-heading text-4xl font-bold mb-4">Our Popular Tours</h2>
         <p className="popular-description text-lg mb-6">
-          Embark on a journey of unparalleled adventure with our Exotic Escapes category. Indulge your wanderlust and explore the world's most breathtaking destinations, each carefully curated to deliver a once-in-a-lifetime experience.
+          Embark on a journey of unparalleled adventure with our Exotic Escapes category. Indulge your wanderlust and explore the worlds most breathtaking destinations, each carefully curated to deliver a once-in-a-lifetime experience.
         </p>
         <div className="description-list mb-6">
           <ul>
             <li className="text-lg mb-2">
-              Uncover hidden paradises that await your discovery. From the lush rainforests of Costa Rica to the surreal landscapes of Morocco, our Exotic Escapes take you off the beaten path to places where nature's wonders and rich histories converge.
+              Uncover hidden paradises that await your discovery. From the lush rainforests of Costa Rica to the surreal landscapes of Morocco, our Exotic Escapes take you off the beaten path to places where natures wonders and rich histories converge.
             </li>
             <li className="text-lg mb-2">
               Experience luxury redefined with our handpicked selection of accommodations. Indulge in opulent resorts, boutique hotels, and exclusive retreats that elevate your travel experience to new heights.

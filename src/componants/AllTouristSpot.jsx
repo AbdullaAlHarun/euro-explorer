@@ -12,7 +12,7 @@ const AllTouristSpot = () => {
 
   const fetchTouristSpots = async () => {
     try {
-      const response = await fetch('http://localhost:5000/euroExplorer');
+      const response = await fetch('https://euro-explorer-server.vercel.app/euroExplorer');
       const data = await response.json();
       setTouristSpots(data);
     } catch (error) {
