@@ -11,6 +11,7 @@ import ViewDetailsPage from "../componants/ViewDetailsPage";
 import TouristSportCard from "../componants/TouristSportCard";
 import PrivateRoute from "./PrivateRoute";
 
+
 const router = createBrowserRouter([
     {
         path: '/',
